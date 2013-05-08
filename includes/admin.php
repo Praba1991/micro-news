@@ -53,6 +53,7 @@ $what='';
 		$content=sanitize($_POST['k_mn_content']);
 		$link=sanitize($_POST['k_mn_link']);
 		
+			
 		global $wpdb;			
 		$table_name = $wpdb->prefix . "kushmicronews";
 			

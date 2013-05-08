@@ -22,7 +22,7 @@ foreach ( $rows as $row )
     	<h3 class="title"><?php echo $row->name;?></h3><span class="postedOn"> on <?php $date=strtotime($row->time); echo date('d M Y',$date);?></span>
     	<div class="text"><?php echo $row->text;?></div>
         
-        <span class="link"><a href="<?php echo $row->url;?>" title="<?php the_title_attribute();?>" target="_blank">Read Full story &raquo;</a></span>
+        <span class="link"><a href="<?php echo $row->url;?>" title="<?php echo $row->name;?>" target="_blank">Read Full story &raquo;</a></span>
     </div> 
 	
 <?php
