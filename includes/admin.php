@@ -63,7 +63,6 @@ $what='';
 
 			$rows_affected = $wpdb->query("INSERT INTO `$table_name` (`time`,`name`,`text`,`url`)VALUES('".date('Y-m-d H:i:s')."','$title','$content','$link');");
 				
-			//$wpdb->query($query); //executing query
 			
 			if($rows_affected==true)
 				{?><div class="updated"><p><strong><?php _e('New Post Added.' ); ?></strong></p></div>'<?php }

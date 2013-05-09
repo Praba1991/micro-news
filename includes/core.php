@@ -5,8 +5,6 @@ function kush_micro_news_output(){
 global $wpdb;
 $table_name = $wpdb->prefix . "kushmicronews"; 
 
-//echo get_option('kush_micro_news_data');
-	
 	 $color = array('#55A4F2','#8bbf36','#fff2a8','#33363B',' #F25555','#222','#999966','#FF66FF'); $i=0;
 	 $no_of_news=get_option( "kush_mn_num_news");
 	 ?>
@@ -22,7 +20,9 @@ foreach ( $rows as $row )
     	<h3 class="title"><?php echo $row->name;?></h3><span class="postedOn"> on <?php $date=strtotime($row->time); echo date('d M Y',$date);?></span>
     	<div class="text"><?php echo $row->text;?></div>
         
-        <span class="link"><a href="<?php echo $row->url;?>" title="<?php echo $row->name;?>" target="_blank">Read Full story &raquo;</a></span>
+        <?php if($row->url):?>
+		<span class="link"><a href="<?php echo $row->url;?>" title="<?php echo $row->name;?>" target="_blank">Read Full story &raquo;</a></span>
+		<?php endif;?>
     </div> 
 	
 <?php

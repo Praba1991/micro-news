@@ -15,7 +15,8 @@ define('KUSH_MICRO_NEWS_URL', plugin_dir_url(__FILE__));
 function kush_micronews_load_depen_reg(){
 	wp_register_style( 'kush_mn_style', KUSH_MICRO_NEWS_URL.'assets/css/style.css');
 	wp_register_style( 'kush_mn_style-admin', KUSH_MICRO_NEWS_URL.'assets/css/style-admin.css');
-	wp_register_script( 'kush_mn_script', KUSH_MICRO_NEWS_URL.'assets/js/script.js',array('jquery'));//importing stylesheet and js.
+	wp_register_script( 'kush_mn_script', KUSH_MICRO_NEWS_URL.'assets/js/script.js',array('jquery'),'08052013');
+	//importing stylesheet and js.
 }
 add_action('init','kush_micronews_load_depen_reg');
 
