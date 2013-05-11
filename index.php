@@ -1,11 +1,12 @@
 <?php
 /*
 Plugin Name: Kush Micro News
-Description: Spread the news in shortest possible way. Use links to refer subjective data and title to concise it.
+Description: Spread the news in shortest possible way. Use links to refer data and title to concise it.
 Version: 1.0
 Author: Kush Sharma
+Author Email: kush.dev@live.com 
 Author URI: http://softnuke.com/
-Plugin URI: http://softnuke.com/kush-micro-news
+Plugin URI: https://github.com/kushsharma/micro-news
 */
 
 define('KUSH_MICRO_NEWS_DIR', plugin_dir_path(__FILE__));
