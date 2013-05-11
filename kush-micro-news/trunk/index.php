@@ -2,7 +2,7 @@
 /*
 Plugin Name: Kush Micro News
 Description: Spread the news in shortest possible way. Use links to refer data and title to concise it.
-Version: 1.0
+Version: 1.0.1
 Author: Kush Sharma
 Author Email: kush.dev@live.com 
 Author URI: http://softnuke.com/
@@ -12,12 +12,6 @@ Plugin URI: https://github.com/kushsharma/micro-news
 define('KUSH_MICRO_NEWS_DIR', plugin_dir_path(__FILE__));
 define('KUSH_MICRO_NEWS_URL', plugin_dir_url(__FILE__));
 	
-add_action('activated_plugin','save_error');
-function save_error(){
-    update_option('plugin_error',  ob_get_contents());
-}	
-echo get_option('plugin_error');	
-
 
 function kush_micronews_load_depen_reg(){
 	wp_register_style( 'kush_mn_style', KUSH_MICRO_NEWS_URL.'assets/css/style.css');
@@ -128,11 +122,13 @@ function kush_mn_install () {
    $table_name = $wpdb->prefix . "kushmicronews"; 
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
+	$ver=get_option("kush_mn_db_version");
+	
 if($wpdb->get_var("SHOW TABLES LIKE '".$table_name."';")!=$table_name)   
 {	
 	$query = "CREATE TABLE $table_name (
 	  id mediumint(9) PRIMARY KEY AUTO_INCREMENT,
-	  time datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 	  name mediumtext NOT NULL,
 	  text text NOT NULL,
 	  url tinytext
