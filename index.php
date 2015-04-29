@@ -2,12 +2,12 @@
 /*
 Plugin Name: Kush Micro News
 Description: Spread the news in shortest possible way. Use links to refer data and title to concise it.
-Version: 1.6.0
+Version: 1.6.2
 Author: Kush Sharma
 Author Email: thekushsharma@gmail.com 
 Author URI: http://softnuke.com/
 Plugin URI: https://github.com/kushsharma/micro-news
-Last Officially Updated: 03 Mar 2015
+Last Officially Updated: 29 Apr 2015
 */
 
 define('KUSH_MICRO_NEWS_DIR', plugin_dir_path(__FILE__));
@@ -63,7 +63,7 @@ function kush_micronews_create_shortcode(){
 	// this will create shortcode [kushmicronews news="5" header="true"]
 	
 	function micronews_shortcode( $atts ) {
-	    $a = shortcode_atts( array( 'news' => '5', 'header' => 'true', 'category' => 'default', 'simple' => 'true' ), $atts );
+	    $a = shortcode_atts( array( 'news' => '5', 'header' => 'true', 'category' => 'default', 'simple' => 'false' ), $atts );
 
 	    return kush_micro_news_output($a['news'], $a['header'], 0, $a['simple'], $a['category']);
 	}
@@ -86,7 +86,7 @@ class KushMNWidget extends WP_Widget {
 			// Widget output
 			extract($args, EXTR_SKIP);
 			
-			$no_news = empty($instance['no_news']) ? '5' : apply_filters('no_news', $instance['no_news']);
+			$no_news = empty($instance['no_news']) ? get_option( "kush_mn_num_news", '5') : apply_filters('no_news', $instance['no_news']);
 			$news_cat = empty($instance['news_cat']) ? 'default' : apply_filters('news_cat', $instance['news_cat']);
 			
 			echo $before_widget;			
@@ -108,7 +108,7 @@ class KushMNWidget extends WP_Widget {
 			// Output admin widget options form
 			
 			
-		$instance = wp_parse_args((array)$instance,	array('no_news' => '', 'news_cat' => 'default'));
+		$instance = wp_parse_args((array)$instance,	array('no_news' => '5', 'news_cat' => 'default'));
 
 		$no_news = strip_tags(stripslashes($instance['no_news']));
 		$news_cat =  strip_tags(stripslashes($instance['news_cat'])); 	
@@ -199,6 +199,9 @@ function kush_micronews_activation() {
 		add_option('kush_mn_color_title','#0066cc');
 		add_option('kush_mn_color_text','#666666');
 		add_option('kush_mn_color_link','#000000');
+		add_option('kush_mn_head_textColor','#FFFFFF');
+		add_option('kush_mn_head_highlightColor','#808080');
+		add_option('kush_mn_head_back','default');
 	  	add_option('kush_mn_load_nav','false');
 	  	add_option('kush_mn_load_nav_swap','true');
 	  	add_option('kush_mn_read_story_text','Read Full story &raquo;');
