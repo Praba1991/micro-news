@@ -2,12 +2,12 @@
 /*
 Plugin Name: Kush Micro News
 Description: Spread the news in shortest possible way. Use links to refer data and title to concise it.
-Version: 1.6.3
+Version: 1.6.4
 Author: Kush Sharma
 Author Email: thekushsharma@gmail.com 
 Author URI: http://softnuke.com/
 Plugin URI: https://github.com/kushsharma/micro-news
-Last Officially Updated: 03 June 2015
+Last Officially Updated: 24 Jan 2016
 */
 
 define('KUSH_MICRO_NEWS_DIR', plugin_dir_path(__FILE__));
@@ -15,8 +15,8 @@ define('KUSH_MICRO_NEWS_URL', plugin_dir_url(__FILE__));
 	
 
 function kush_micronews_load_depen_reg(){
-	wp_register_style( 'kush_mn_style', KUSH_MICRO_NEWS_URL.'assets/css/style.css', array(), '03032015');	
-	wp_register_script( 'kush_mn_script', KUSH_MICRO_NEWS_URL.'assets/js/script.js', array('jquery'), '03032015');
+	wp_register_style( 'kush_mn_style', KUSH_MICRO_NEWS_URL.'assets/css/style.css', array(), '24012016');	
+	wp_register_script( 'kush_mn_script', KUSH_MICRO_NEWS_URL.'assets/js/script.js', array('jquery'), '24012016');
 	//importing stylesheet and js.
 }
 add_action('init','kush_micronews_load_depen_reg');
@@ -88,9 +88,10 @@ class KushMNWidget extends WP_Widget {
 			
 			$no_news = empty($instance['no_news']) ? get_option( "kush_mn_num_news", '5') : apply_filters('no_news', $instance['no_news']);
 			$news_cat = empty($instance['news_cat']) ? 'default' : apply_filters('news_cat', $instance['news_cat']);
-			
-			echo $before_widget;			
-			echo kush_micro_news_output($no_news, "true", "0", "false", $news_cat);			
+			$news_header = empty($instance['news_header']) ? get_option( "kush_mn_head_enable", 'true') : apply_filters('news_header', $instance['news_header']);
+
+			echo $before_widget;
+			echo kush_micro_news_output($no_news, $news_header, "0", "false", $news_cat);			
 			echo $after_widget;
 		}
 
@@ -100,6 +101,7 @@ class KushMNWidget extends WP_Widget {
 		
 			$instance['no_news'] = strip_tags(stripslashes($new_instance['no_news']));
 			$instance['news_cat'] = strip_tags(stripslashes($new_instance['news_cat']));
+			$instance['news_header'] = (strip_tags(stripslashes($new_instance['news_header'])) == 'on') ? "true" : "false";
 
 			return $instance;
 		}
@@ -108,26 +110,24 @@ class KushMNWidget extends WP_Widget {
 			// Output admin widget options form
 			
 			
-		$instance = wp_parse_args((array)$instance,	array('no_news' => '5', 'news_cat' => 'default'));
+		$instance = wp_parse_args((array)$instance,	array('no_news' => '5', 'news_cat' => 'default', 'news_header' => 'true'));
 
 		$no_news = strip_tags(stripslashes($instance['no_news']));
 		$news_cat =  strip_tags(stripslashes($instance['news_cat'])); 	
+		$news_header =  strip_tags(stripslashes($instance['news_header'])); 	
 
 		$dbver = get_option('kush_mn_db_version','0');
 ?>
 			
 			  	<div class="option">
+				  <input type="text" size="5" id="<?php echo $this->get_field_id('no_news'); ?>" name="<?php echo $this->get_field_name('no_news'); ?>" value="<?php echo $instance['no_news']; ?>" />
 				  <label for="no_news">
 					<?php _e('Number of news'); ?>
 				  </label>
-				  <input type="text" id="<?php echo $this->get_field_id('no_news'); ?>" name="<?php echo $this->get_field_name('no_news'); ?>" value="<?php echo $instance['no_news']; ?>" />
-				  <h5>~Default: 5</h5>
+				  <h6>~Default: 5</h6>
 				</div>
 				<?php if($dbver != '0' && $dbver != '1.0'): ?> 
 					<div class="option">
-					  <label for="news_cat">
-						<?php _e('Category'); ?>
-					  </label>
 	<!-- 				  <input type="text" id="<?php echo $this->get_field_id('news_cat'); ?>" name="<?php echo $this->get_field_name('news_cat'); ?>" value="<?php echo $news_cat; ?>" />
 	 -->				<select name="<?php echo $this->get_field_name('news_cat'); ?>" id="<?php echo $this->get_field_id('news_cat'); ?>">
 						  <option value="default" <?php if($news_cat == "default") echo 'selected';?> >Default</option>
@@ -136,9 +136,18 @@ class KushMNWidget extends WP_Widget {
 						  <option value="catc" <?php if($news_cat == "catc") echo 'selected';?> >CatC</option>
 						  <option value="catd" <?php if($news_cat == "catd") echo 'selected';?> >CatD</option>
 						</select>
-					  <h5>~Default: "default"</h5>
+					  <label for="news_cat">
+						<?php _e('Category'); ?>
+					  </label>
+					  <h6>~Default: "default"</h6>
 					</div>
 				<?php endif;?>
+				<div class="option">
+				  <input type="checkbox" id="<?php echo $this->get_field_id('news_header'); ?>" name="<?php echo $this->get_field_name('news_header');?>" <?php echo ($instance['news_header'] == 'true')? 'checked':''; ?> />
+				  <label for="news_header">
+					<?php _e('Header'); ?>
+				  </label>
+				</div>
 				
 			
 <?php
@@ -202,6 +211,7 @@ function kush_micronews_activation() {
 		add_option('kush_mn_head_textColor','#FFFFFF');
 		add_option('kush_mn_head_highlightColor','#808080');
 		add_option('kush_mn_head_back','default');
+		add_option('kush_mn_head_enable','true');
 	  	add_option('kush_mn_load_nav','false');
 	  	add_option('kush_mn_load_nav_swap','true');
 	  	add_option('kush_mn_editor_access','false');

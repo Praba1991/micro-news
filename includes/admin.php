@@ -319,6 +319,7 @@ if(isset($_POST['valSub']))
 		<div class="options">
 			<label for="editorAccess">Enable access to Editors:</label>
 			<input type="checkbox" name="editorAccess" <?php $lHov=get_option('kush_mn_editor_access');if($lHov=='true'){echo 'checked';}?>/>
+			<h5 style="display:inline-block;margin:0;">(Users with access level of editor.)</h5>
 		</div>
 		
 		<br/><br/>
