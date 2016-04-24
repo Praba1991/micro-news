@@ -58,6 +58,7 @@ $table_name = $wpdb->prefix . "kushmicronews";
 	
 	$loadNav = get_option('kush_mn_load_nav','true');
 	$loadNavSwap = get_option('kush_mn_load_nav_swap','true');
+	$loadNewTab = get_option('kush_mn_load_newtab','true');
 	$readStoryText = get_option('kush_mn_read_story_text','Read Full story &raquo;');
 	$dbver = get_option('kush_mn_db_version','0');
 	$category = strtolower ($category);
@@ -120,15 +121,22 @@ $table_name = $wpdb->prefix . "kushmicronews";
 	    	
 	    	//show text
 	    	$output_html .='<div class="text" style="color:'.$textColor.'">'.$row->text.' ';
-	    		$output_html .='<span class="postedOn"> on '.$formateddate.'</span>';
+	    		$output_html .='<span class="postedOn">'.__('on', 'kush-mn-plugin').' '.$formateddate.'</span>';
 	    	$output_html .='</div>';
 	        
 	        //show url if present
 	        if($row->url):
 				$output_html .='<span class="link ';
+				
 				if($cleanHov!='true')//check if show link color inverted
 					$output_html .='clean';
-				$output_html .='"><a href="'.$row->url.'" title="'.$row->name.'" target="_blank" style="color:'.$linkColor.'">'.$readStoryText.'</a></span>';
+				
+				$output_html .='"><a href="'.$row->url.'" title="'.$row->name.'" ';
+				
+				if($loadNewTab == 'true')
+					$output_html .=  'target="_blank"';
+
+				$output_html .= 'style="color:'.$linkColor.'">'.$readStoryText.'</a></span>';
 			endif;
 
 	    $output_html .='</div>';//wrapNews ends
@@ -205,9 +213,9 @@ if(isset($_POST['nTitle']) & empty($_POST['nTitle'])===false)
 			$chk=$wpdb->query($query);
 			
 			if($chk)
-				$what= 'Updated Sucessfully.';
+				$what= __('Updated successfully.', 'kush-mn-plugin');
 			else
-				$what='Serious Error Occured :O';
+				$what=__('Serious error occured.', 'kush-mn-plugin');
 		
 		}
 if(isset($_POST['dId']))
@@ -217,9 +225,9 @@ if(isset($_POST['dId']))
 			$chk=$wpdb->query($query);
 			
 			if($chk)
-				$what= 'Deleted Sucessfully.';
+				$what= __('Deleted successfully.', 'kush-mn-plugin');
 			else
-				$what='Serious Error Occured :O';
+				$what=__('Serious error occured.', 'kush-mn-plugin');
 	}
 
 if(is_admin())
@@ -240,7 +248,7 @@ if(is_admin())
 	<div class="wrap">
 		<h3></h3>
 		<div class="icon32" id="icon-edit"> <br /> </div>
-		<h2>Micro News Posts</h2>
+		<h2><?php _e('Micro News Posts', 'kush-mn-plugin');?></h2>
 	
 	<?php if($what!=''){echo '<div class="updated"><p>'.$what.'</p></div>';}?>
 	
@@ -259,12 +267,12 @@ if(is_admin())
 					<?php echo $row->text;?>
 				</div>
 				<div class="container-admin-meta-link">
-					<span> <strong>on</strong> <?php $date=strtotime($row->time); echo date('d M Y',$date);?></span>
+					<span> <strong><?php _e('on', 'kush-mn-plugin');?></strong> <?php $date=strtotime($row->time); echo date('d M Y',$date);?></span>
 					|
 					<?php if(empty($row->category) == false){
-						echo '<strong> Category key: </strong><span id="mn-cat-'.$row->id.'">'.$row->category.'</span> | ';
+						echo '<strong>'.__('Category key', 'kush-mn-plugin').': </strong><span id="mn-cat-'.$row->id.'">'.$row->category.'</span> | ';
 					}?>
-					<strong>Reference Link: </strong><span id="mn-link-<?php echo $row->id;?>"><?php echo $row->url;?></a></span>
+					<strong><?php _e('Reference Link', 'kush-mn-plugin'); ?>: </strong><span id="mn-link-<?php echo $row->id;?>"><?php echo $row->url;?></a></span>
 				</div>
 				<input type="button" value="Edit" class="button-primary editB" data-id="mn-edit-<?php echo $row->id;?>"/>
 				<input type="button" value="X" class="button-primary closeB" />
@@ -280,14 +288,14 @@ if(is_admin())
 	<?php //micro news ends
 		if($totalpage>=1 && $page<$totalpage)	
 			{?>
-			<ul class="micro-news-post-nav"><li style="border:0;">Page : </li>
+			<ul class="micro-news-post-nav"><li style="border:0;"><?php _e('Page', 'kush-mn-plugin');?> : </li>
 			<?php			
 			for($z=1;$z<=$totalpage;$z++)
 				if($z!=$page)
 				{echo '<li ><a href="?page=micro-news&pgno='.$z.'">'.$z.'</a></li>';}
 			}
 		if($page!=1)
-			{echo '<li><a href="?page=micro-news&pgno=1">Home</a></li>';}
+			{echo '<li><a href="?page=micro-news&pgno=1">'.__('Home', 'kush-mn-plugin').'</a></li>';}
 	}// if closed
 	?>
 	</ul>

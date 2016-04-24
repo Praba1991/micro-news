@@ -2,12 +2,14 @@
 /*
 Plugin Name: Kush Micro News
 Description: Spread the news in shortest possible way. Use links to refer data and title to concise it.
-Version: 1.6.4
+Version: 1.6.5
 Author: Kush Sharma
 Author Email: thekushsharma@gmail.com 
 Author URI: http://softnuke.com/
 Plugin URI: https://github.com/kushsharma/micro-news
-Last Officially Updated: 24 Jan 2016
+Text Domain: kush-mn-plugin
+Domain Path: /lang/
+Last Officially Updated: 24 Apr 2016
 */
 
 define('KUSH_MICRO_NEWS_DIR', plugin_dir_path(__FILE__));
@@ -25,6 +27,10 @@ add_action('init','kush_micronews_create_shortcode');
 add_action('wp_enqueue_scripts','kush_micronews_load_depen');
 add_action('admin_enqueue_scripts','kush_micronews_load_depen');
 
+function load_newsplugin_textdomain() {
+  load_plugin_textdomain( 'kush-mn-plugin', FALSE, basename( dirname( __FILE__ ) ) . '/lang/' );
+}
+add_action( 'plugins_loaded', 'load_newsplugin_textdomain' );
 
 function kush_micronews_load_depen(){
 //load dependent libraries
@@ -79,7 +85,7 @@ class KushMNWidget extends WP_Widget {
 		
 		function KushMNWidget() {
 			// Instantiate the parent object
-			parent::__construct( 'kush-micro-news', 'Kush Micro News','description=Micro news data will output where this widget resides.' );
+			parent::__construct( 'kush-micro-news', 'Kush Micro News','description='.__('Micro news data will output where this widget resides.', 'kush-mn-plugin') );
 		}
 
 		function widget( $args, $instance ) {
@@ -122,7 +128,7 @@ class KushMNWidget extends WP_Widget {
 			  	<div class="option">
 				  <input type="text" size="5" id="<?php echo $this->get_field_id('no_news'); ?>" name="<?php echo $this->get_field_name('no_news'); ?>" value="<?php echo $instance['no_news']; ?>" />
 				  <label for="no_news">
-					<?php _e('Number of news'); ?>
+					<?php _e('Number of news', 'kush-mn-plugin'); ?>
 				  </label>
 				  <h6>~Default: 5</h6>
 				</div>
@@ -137,15 +143,15 @@ class KushMNWidget extends WP_Widget {
 						  <option value="catd" <?php if($news_cat == "catd") echo 'selected';?> >CatD</option>
 						</select>
 					  <label for="news_cat">
-						<?php _e('Category'); ?>
+						<?php _e('Category', 'kush-mn-plugin'); ?>
 					  </label>
-					  <h6>~Default: "default"</h6>
+					  <h6>~Default: "Default"</h6>
 					</div>
 				<?php endif;?>
 				<div class="option">
 				  <input type="checkbox" id="<?php echo $this->get_field_id('news_header'); ?>" name="<?php echo $this->get_field_name('news_header');?>" <?php echo ($instance['news_header'] == 'true')? 'checked':''; ?> />
 				  <label for="news_header">
-					<?php _e('Header'); ?>
+					<?php _e('Header', 'kush-mn-plugin'); ?>
 				  </label>
 				</div>
 				
@@ -216,6 +222,7 @@ function kush_micronews_activation() {
 	  	add_option('kush_mn_load_nav_swap','true');
 	  	add_option('kush_mn_editor_access','false');
 	  	add_option('kush_mn_read_story_text','Read Full story &raquo;');
+	  	add_option('kush_mn_load_newtab','true');
 	}
 	kush_mn_install();
 

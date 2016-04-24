@@ -22,6 +22,8 @@ delete_option('kush_mn_load_nav');
 delete_option('kush_mn_load_nav_swap');
 delete_option('kush_mn_read_story_text');
 delete_option('kush_mn_editor_access');
+delete_option('kush_mn_load_newtab');
+
 
 global $wpdb;
 	$table_name = $wpdb->prefix . "kushmicronews"; 

@@ -36,29 +36,40 @@ if(isset($_POST['valSub']))
 			{$num=sanitize($_POST['numPost']);
 			 update_option( "kush_mn_num_news",$num);
 			 
-			 $what='Changes Saved !';
+			 $what= __('Changes saved!', 'kush-mn-plugin');
 			}
 		else
 		{
 			update_option( "kush_mn_num_news",'5');
-			echo _e('<h4>Number of post cannot left blank, reverted to default.</h4>');		
+			echo '<h4>'.__('Number of post cannot left blank, reverted to default.', 'kush-mn-plugin').'</h4>';	
 		}
 	}
 
 	if(isset($_POST['chkLoadNav']))
-		{if($_POST['chkLoadNav']==true)
+	{	if($_POST['chkLoadNav']==true)
 			update_option( "kush_mn_load_nav",'true');		
-			
-		$what='Changes Saved !';
-		}
+		
+		$what=__('Changes saved!', 'kush-mn-plugin');
+	}
 	else
 		update_option( "kush_mn_load_nav",'false');
+
+	if(isset($_POST['chkLoadNewTab']))
+	{
+		if($_POST['chkLoadNewTab'] == true)
+			update_option( "kush_mn_load_newtab",'true');		
+		
+		$what=__('Changes saved!', 'kush-mn-plugin');
+	}
+	else
+		update_option( "kush_mn_load_newtab",'false');		
+
 
 	if(isset($_POST['chkLoadNavSwap']))
 		{if($_POST['chkLoadNavSwap']==true)
 			update_option( "kush_mn_load_nav_swap",'true');		
 			
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 		}
 	else
 		update_option( "kush_mn_load_nav_swap",'false');
@@ -69,7 +80,7 @@ if(isset($_POST['valSub']))
 
 		if($_POST['myRename']!='')
 		{ update_option("kush_mn_widget_name", htmlspecialchars($_POST['myRename']));		 
-		 $what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 		}
 		else
 		{
@@ -85,7 +96,7 @@ if(isset($_POST['valSub']))
 
 		if($_POST['fullStoryText']!='')
 		{update_option("kush_mn_read_story_text", htmlspecialchars($_POST['fullStoryText']));		 
-		 $what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 		}
 		else
 		{
@@ -98,7 +109,7 @@ if(isset($_POST['valSub']))
 		{if($_POST['chkBorder']==true)
 			update_option( "kush_mn_show_lborder",'true');		
 			
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 		}
 	else
 		update_option( "kush_mn_show_lborder",'false');
@@ -107,7 +118,7 @@ if(isset($_POST['valSub']))
 		{if($_POST['chkHover']==true)
 			update_option( "kush_mn_show_linkclean",'true');		
 		
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 		}
 	else	
 		update_option('kush_mn_show_linkclean','false');
@@ -116,7 +127,7 @@ if(isset($_POST['valSub']))
 	{	if($_POST['chkHtmlParse']==true)
 			update_option( "kush_mn_parse_html",'true');		
 		
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 	else	
 		update_option('kush_mn_parse_html','false');
@@ -125,37 +136,37 @@ if(isset($_POST['valSub']))
 	if(isset($_POST['textColor']) && $_POST['textColor']!="")
 	{
 		update_option( "kush_mn_color_text",$_POST['textColor']);
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 	
 	if(isset($_POST['titleColor']) && $_POST['titleColor']!="")
 	{
 		update_option( "kush_mn_color_title",$_POST['titleColor']);
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 	
 	if(isset($_POST['linkColorField']) && $_POST['linkColorField']!="")
 	{
 		update_option( "kush_mn_color_link",$_POST['linkColorField']);
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 
 	if(isset($_POST['headTextColor']) && $_POST['headTextColor']!="")
 	{
 		update_option( "kush_mn_head_textColor",$_POST['headTextColor']);
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 	
 	if(isset($_POST['headHighlightColor']) && $_POST['headHighlightColor']!="")
 	{
 		update_option( "kush_mn_head_highlightColor",$_POST['headHighlightColor']);
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 
 	if(isset($_POST['headBack']) && $_POST['headBack']!="")
 	{
 		update_option( "kush_mn_head_back",$_POST['headBack']);
-		$what='Changes Saved !';
+			 $what=__('Changes saved!', 'kush-mn-plugin');
 	}
 
 
@@ -163,7 +174,7 @@ if(isset($_POST['valSub']))
 	{	if($_POST['editorAccess'] == true)
 			update_option( "kush_mn_editor_access",'true');		
 		
-		$what='Changes Saved !';
+			$what=__('Changes saved!', 'kush-mn-plugin');
 	}
 	else	
 		update_option('kush_mn_editor_access','false');
@@ -172,34 +183,38 @@ if(isset($_POST['valSub']))
 ?>
 <div class="wrap">
 	<div class="icon32" id="icon-options-general"> <br /> </div>
-	<h2>Micro News Settings</h2>
+	<h2><?php _e('Micro News Settings', 'kush-mn-plugin');?></h2>
 	<?php echo ($what!='')?'<div class="updated"><p><strong>'.$what.'</strong></p></div>':''; ?>
 	<br/>
 	<form action="" method="post" id="mirco-news-config">
-		<h3>Functional :</h3>
+		<h3><?php _e('Functional', 'kush-mn-plugin');?></h3>
 		<div class="options">
-			<label for="numPost">Number of news to display:</label>
+			<label for="numPost"><?php _e('Number of news to display', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="numPost" value="<?php echo get_option( "kush_mn_num_news");?>"/>
 			<h5 style="display:inline-block;margin:0;">(via kush_micro_news_output() function)</h5>
 		</div>
 		<div class="options">
-			<label for="chkLoadNav">Load More navigation:</label>
+			<label for="chkLoadNav"><?php _e('Load More navigation', 'kush-mn-plugin');?>:</label>
 			<input type="checkbox" name="chkLoadNav" <?php $lnav=get_option('kush_mn_load_nav');if($lnav=='true'){echo 'checked';}?>/>
 		</div>
 		<div class="options">
-			<label for="chkLoadNavSwap">Swap news when navigating:</label>
+			<label for="chkLoadNewTab"><?php _e('Open link in new tab', 'kush-mn-plugin');?>:</label>
+			<input type="checkbox" name="chkLoadNewTab" <?php if( get_option('kush_mn_load_newtab', 'true') == 'true'){echo 'checked';}?>/>
+		</div>
+		<div class="options">
+			<label for="chkLoadNavSwap"><?php _e('Swap news when navigating', 'kush-mn-plugin');?>:</label>
 			<input type="checkbox" name="chkLoadNavSwap" <?php $lnavSwap=get_option('kush_mn_load_nav_swap');if($lnavSwap=='true'){echo 'checked';}?>/>
-			<h5 style="display:inline-block;margin:0;">Disabling this will append news when Load More is clicked.</h5>
+			<h5 style="display:inline-block;margin:0;"><?php _e('Disabling this will append news when Load More is clicked.', 'kush-mn-plugin');?></h5>
 		</div>
 
-		<h3>Header :</h3>
+		<h3><?php _e('Header', 'kush-mn-plugin');?></h3>
 		<div class="options">
-			<label for="myRename">Title over news:</label>
+			<label for="myRename"><?php _e('Title over news', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="myRename" value="<?php echo get_option("kush_mn_widget_name", "Micro News");?>"/>
 			<h5 style="display:inline-block;margin:0;">(Default: Micro News)</h5>
 		</div>
 		<div class="options">			
-			<label for="headTextColor">Head Text Color:</label>
+			<label for="headTextColor"><?php _e('Head Text Color', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="headTextColor" value="<?php echo get_option('kush_mn_head_textColor','#FFFFFF');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="#FFFFFF">White [Default]</option>
@@ -216,7 +231,7 @@ if(isset($_POST['valSub']))
 			<h5 style="display:inline-block;margin:0;">(Hexadecimal color values, like: #0066CC)</h5>
 		</div>
 		<div class="options">			
-			<label for="headHighlightColor">Head Highlight Color:</label>
+			<label for="headHighlightColor"><?php _e('Head Highlight Color', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="headHighlightColor" value="<?php echo get_option('kush_mn_head_highlightColor','#808080');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="#808080">Light Grey [Default]</option>
@@ -232,7 +247,7 @@ if(isset($_POST['valSub']))
 			</select>
 		</div>
 		<div class="options">			
-			<label for="headBack">Head Background Color:</label>
+			<label for="headBack"><?php _e('Head Background Color', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="headBack" value="<?php echo get_option('kush_mn_head_back','default');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="default">Grey Bars [Default]</option>
@@ -247,14 +262,14 @@ if(isset($_POST['valSub']))
 			</select>
 		</div>
 
-		<h3>Display :</h3>
+		<h3><?php _e('Display', 'kush-mn-plugin');?></h3>
 		<div class="options">
-			<label for="myRename">Full Story Text:</label>
+			<label for="myRename"><?php _e('Full Story Text', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="fullStoryText" value="<?php echo get_option("kush_mn_read_story_text");?>"/>
 			<h5 style="display:inline-block;margin:0;">(Default: Read Full story &raquo;)</h5>
 		</div>			
 		<div class="options">			
-			<label for="titleColor">Title Color:</label>
+			<label for="titleColor"><?php _e('Title Color', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="titleColor" value="<?php echo get_option('kush_mn_color_title','#0066CC');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="#0066CC">Light Blue [Default]</option>
@@ -270,7 +285,7 @@ if(isset($_POST['valSub']))
 			<h5 style="display:inline-block;margin:0;">(Hexadecimal color values, like: #0066CC)</h5>
 		</div>
 		<div class="options">
-			<label for="textColor">Text Color:</label>
+			<label for="textColor"><?php _e('Text Color', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="textColor" value="<?php echo get_option('kush_mn_color_text', '#666666');?>" />
 			<select name="textColorList" onclick="check_custom_color(this,'text')">
 				<option value="#666666">Grey [Default]</option>
@@ -285,7 +300,7 @@ if(isset($_POST['valSub']))
 			</select>
 		</div>
 		<div class="options">
-			<label for="linkColorField">Link Color:</label>
+			<label for="linkColorField"><?php _e('Link Color', 'kush-mn-plugin');?>:</label>
 			<input type="text" name="linkColorField" value="<?php echo get_option('kush_mn_color_link', '#000000');?>" />
 			<select name="linkColorList" onclick="check_custom_color(this,'link')">
 				<option value="#000000">Black [Default]</option>
@@ -300,38 +315,38 @@ if(isset($_POST['valSub']))
 			</select>
 		</div>
 		<div class="options">
-			<label for="chkBorder">Enable colorful borders:</label>
+			<label for="chkBorder"><?php _e('Enable colorful borders', 'kush-mn-plugin');?>:</label>
 			<input type="checkbox" name="chkBorder" <?php $sBor=get_option('kush_mn_show_lborder');if($sBor=='true'){echo 'checked';}?>/>
 		</div>
 		<div class="options">
-			<label for="chkHover">Enable link hover effect:</label>
+			<label for="chkHover"><?php _e('Enable link hover effect', 'kush-mn-plugin');?>:</label>
 			<input type="checkbox" name="chkHover" <?php $lHov=get_option('kush_mn_show_linkclean');if($lHov=='true'){echo 'checked';}?>/>
 		</div>	
 
-		<h3>Input :</h3>
+		<h3><?php _e('Input', 'kush-mn-plugin');?></h3>
 		<div class="options">
-			<label for="chkHtmlParse">HTML parsing while adding news:</label>
+			<label for="chkHtmlParse"><?php _e('HTML parsing while adding news', 'kush-mn-plugin');?>:</label>
 			<input type="checkbox" name="chkHtmlParse" <?php $lHov=get_option('kush_mn_parse_html');if($lHov=='true'){echo 'checked';}?>/>
-			<h5 style="display:inline-block;margin:0;">(Try not to use improper markup if HTML parsing is enabled otherwise it could break up your whole site.)</h5>
+			<h5 style="display:inline-block;margin:0;">(<?php _e('Try not to use improper markup if HTML parsing is enabled otherwise it could break up your whole site.', 'kush-mn-plugin');?>)</h5>
 		</div>
 
-		<h3>Access :</h3>
+		<h3><?php _e('Access', 'kush-mn-plugin');?></h3>
 		<div class="options">
-			<label for="editorAccess">Enable access to Editors:</label>
+			<label for="editorAccess"><?php _e('Enable access to Editors', 'kush-mn-plugin');?>:</label>
 			<input type="checkbox" name="editorAccess" <?php $lHov=get_option('kush_mn_editor_access');if($lHov=='true'){echo 'checked';}?>/>
-			<h5 style="display:inline-block;margin:0;">(Users with access level of editor.)</h5>
+			<h5 style="display:inline-block;margin:0;">(<?php _e('Users with access level of editor.', 'kush-mn-plugin');?>)</h5>
 		</div>
 		
 		<br/><br/>
 		<input type="hidden" name="valSub" value="submitted"/>
 		<input type="submit" value="Save Changes" class="button-primary"/>
 		<br><hr>
-		Download Backup of your Micro News data : <a href="?backup=true" target="_blank" class="button-primary">Download</a>
+		<?php _e('Download Backup of your Micro News data', 'kush-mn-plugin');?>: <a href="?backup=true" target="_blank" class="button-primary"><?php _e('Download', 'kush-mn-plugin');?></a>
 
 
 		<br><hr>
-		Update table storage: <a href="?updatedb=true" target="_blank" class="button-primary">Update</a>
-		<h5 style="display:inline-block;margin:0;">Create a backup first.</h5>
+		<?php _e('Update table storage', 'kush-mn-plugin');?>: <a href="?updatedb=true" target="_blank" class="button-primary"><?php _e('Update', 'kush-mn-plugin');?></a>
+		<h5 style="display:inline-block;margin:0;"><?php _e('Create a backup first.', 'kush-mn-plugin');?></h5>
 	</form>	
 	<br><br>
 	Note : Give <a href="http://plugins.svn.wordpress.org/kush-micro-news/trunk/readme.txt" target="_blank">readme.txt</a> a try before experimenting stuff if you have no idea what you are doing.
@@ -368,7 +383,7 @@ function update_table(){
 
 	if($rows_affected > 0)
 	{
-		$text .= "Updated Successfully! "; 
+		$text .= __('Updated Successfully!', 'kush-mn-plugin'); 
 		update_option('kush_mn_db_version','1.1');
 	}
 
@@ -386,7 +401,7 @@ function kush_micronews_check_dbupdate()
 	{
 		if($ver == "1.0")
 		{
-			echo "<div class='update-nag'>URGENT: DATABASE UPDATE REQUIRED! Use button at the end of Settings page.</div>";
+			echo "<div class='update-nag'>".__('URGENT: DATABASE UPDATE REQUIRED! Use button at the end of Settings page.', 'kush-mn-plugin')."</div>";
 		}
 	}
 }
@@ -441,36 +456,36 @@ $what='';
 			$rows_affected = $wpdb->query($query);
 				
 			if($rows_affected==true)
-				{?><div class="updated"><p><strong><?php _e('New Post Added.' ); ?></strong></p></div>'<?php }
+				{?><div class="updated"><p><strong><?php _e('New Post Added.','kush-mn-plugin'); ?></strong></p></div>'<?php }
 			}
 		else
-			{$what='Don\'t you think atleast title is necessary.';}
+			{$what=__('Don\'t you think atleast title is necessary.','kush-mn-plugin');}
 		}
 
 ?>
 <div class="wrap">
 <div class="icon32" id="icon-tools"> <br /> </div>
-<h2>Micro News Add New Post</h2>
+<h2><?php _e('Micro News Add New Post','kush-mn-plugin');?></h2>
 
 <?php if($what!=''){echo '<h3>'.$what.'</h3>';}?>
 
 	<form method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" id="add-micro-news">
 		<div>
 			<div class="row">
-				<label for="k_mn_title">Title:</label>
+				<label for="k_mn_title"><?php _e('Title','kush-mn-plugin');?>:</label>
 				<input type="text" name="k_mn_title" placeholder="Title of News"/>
 			</div>
 			<div class="row">
-				<label for="k_mn_content">Content:</label>
+				<label for="k_mn_content"><?php _e('Content','kush-mn-plugin');?>:</label>
 				<textarea name="k_mn_content" placeholder="Excerpt">.</textarea>
 			</div>
 			<div class="row">
-				<label for="k_mn_link">Link:</label>
+				<label for="k_mn_link"><?php _e('Link','kush-mn-plugin');?>:</label>
 				<input type="text" name="k_mn_link" placeholder="Link Reference"/>
 			</div>
 			<?php if($dbver != '0' && $dbver != '1.0' && $dbver != '') :?>
 				<div class="row">
-					<label for="k_mn_cat">Category Key:</label>
+					<label for="k_mn_cat"><?php _e('Category Key','kush-mn-plugin');?>:</label>
 					<!-- <input type="text" name="k_mn_cat" placeholder="Category Key:" value="default"/> -->
 					<select name="k_mn_cat">
 					  <option value="default" selected>Default</option>
