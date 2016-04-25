@@ -1,16 +1,35 @@
-# Copyright (C) 2016 Kush Micro News
-# This file is distributed under the same license as the Kush Micro News package.
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Kush Micro News 1.6.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/kush-micro-news\n"
-"POT-Creation-Date: 2016-04-24 16:29:30+00:00\n"
+"Project-Id-Version: Kush Micro News\n"
+"POT-Creation-Date: 2016-04-25 12:11+0530\n"
+"PO-Revision-Date: 2016-04-25 12:10+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: index.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: includes/admin.php:11 includes/admin.php:17
+msgid "Micro News"
+msgstr ""
+
+#: includes/admin.php:12 includes/admin.php:18 includes/admin.php:502
+msgid "Add New"
+msgstr ""
+
+#: includes/admin.php:13 includes/admin.php:19
+msgid "Settings"
+msgstr ""
 
 #: includes/admin.php:39 includes/admin.php:52 includes/admin.php:62
 #: includes/admin.php:72 includes/admin.php:83 includes/admin.php:99
@@ -120,7 +139,7 @@ msgid "Access"
 msgstr ""
 
 #: includes/admin.php:335
-msgid "Enable access to Editors"
+msgid "Enable access to editors"
 msgstr ""
 
 #: includes/admin.php:337
@@ -180,12 +199,8 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: includes/admin.php:488
+#: includes/admin.php:488 includes/core.php:273
 msgid "Category Key"
-msgstr ""
-
-#: includes/admin.php:502
-msgid "Add New"
 msgstr ""
 
 #: includes/core.php:124 includes/core.php:270
@@ -206,10 +221,6 @@ msgstr ""
 
 #: includes/core.php:251
 msgid "Micro News Posts"
-msgstr ""
-
-#: includes/core.php:273
-msgid "Category key"
 msgstr ""
 
 #: includes/core.php:275

@@ -121,7 +121,7 @@ $table_name = $wpdb->prefix . "kushmicronews";
 	    	
 	    	//show text
 	    	$output_html .='<div class="text" style="color:'.$textColor.'">'.$row->text.' ';
-	    		$output_html .='<span class="postedOn">'.__('on', 'kush-mn-plugin').' '.$formateddate.'</span>';
+	    		$output_html .='<span class="postedOn">'.__('on', 'kush-micro-news').' '.$formateddate.'</span>';
 	    	$output_html .='</div>';
 	        
 	        //show url if present
@@ -213,9 +213,9 @@ if(isset($_POST['nTitle']) & empty($_POST['nTitle'])===false)
 			$chk=$wpdb->query($query);
 			
 			if($chk)
-				$what= __('Updated successfully.', 'kush-mn-plugin');
+				$what= __('Updated successfully.', 'kush-micro-news');
 			else
-				$what=__('Serious error occured.', 'kush-mn-plugin');
+				$what=__('Serious error occured.', 'kush-micro-news');
 		
 		}
 if(isset($_POST['dId']))
@@ -225,9 +225,9 @@ if(isset($_POST['dId']))
 			$chk=$wpdb->query($query);
 			
 			if($chk)
-				$what= __('Deleted successfully.', 'kush-mn-plugin');
+				$what= __('Deleted successfully.', 'kush-micro-news');
 			else
-				$what=__('Serious error occured.', 'kush-mn-plugin');
+				$what=__('Serious error occured.', 'kush-micro-news');
 	}
 
 if(is_admin())
@@ -248,7 +248,7 @@ if(is_admin())
 	<div class="wrap">
 		<h3></h3>
 		<div class="icon32" id="icon-edit"> <br /> </div>
-		<h2><?php _e('Micro News Posts', 'kush-mn-plugin');?></h2>
+		<h2><?php _e('Micro News Posts', 'kush-micro-news');?></h2>
 	
 	<?php if($what!=''){echo '<div class="updated"><p>'.$what.'</p></div>';}?>
 	
@@ -267,12 +267,12 @@ if(is_admin())
 					<?php echo $row->text;?>
 				</div>
 				<div class="container-admin-meta-link">
-					<span> <strong><?php _e('on', 'kush-mn-plugin');?></strong> <?php $date=strtotime($row->time); echo date('d M Y',$date);?></span>
+					<span> <strong><?php _e('on', 'kush-micro-news');?></strong> <?php $date=strtotime($row->time); echo date('d M Y',$date);?></span>
 					|
 					<?php if(empty($row->category) == false){
-						echo '<strong>'.__('Category key', 'kush-mn-plugin').': </strong><span id="mn-cat-'.$row->id.'">'.$row->category.'</span> | ';
+						echo '<strong>'.__('Category Key', 'kush-micro-news').': </strong><span id="mn-cat-'.$row->id.'">'.$row->category.'</span> | ';
 					}?>
-					<strong><?php _e('Reference Link', 'kush-mn-plugin'); ?>: </strong><span id="mn-link-<?php echo $row->id;?>"><?php echo $row->url;?></a></span>
+					<strong><?php _e('Reference Link', 'kush-micro-news'); ?>: </strong><span id="mn-link-<?php echo $row->id;?>"><?php echo $row->url;?></a></span>
 				</div>
 				<input type="button" value="Edit" class="button-primary editB" data-id="mn-edit-<?php echo $row->id;?>"/>
 				<input type="button" value="X" class="button-primary closeB" />
@@ -288,14 +288,14 @@ if(is_admin())
 	<?php //micro news ends
 		if($totalpage>=1 && $page<$totalpage)	
 			{?>
-			<ul class="micro-news-post-nav"><li style="border:0;"><?php _e('Page', 'kush-mn-plugin');?> : </li>
+			<ul class="micro-news-post-nav"><li style="border:0;"><?php _e('Page', 'kush-micro-news');?> : </li>
 			<?php			
 			for($z=1;$z<=$totalpage;$z++)
 				if($z!=$page)
 				{echo '<li ><a href="?page=micro-news&pgno='.$z.'">'.$z.'</a></li>';}
 			}
 		if($page!=1)
-			{echo '<li><a href="?page=micro-news&pgno=1">'.__('Home', 'kush-mn-plugin').'</a></li>';}
+			{echo '<li><a href="?page=micro-news&pgno=1">'.__('Home', 'kush-micro-news').'</a></li>';}
 	}// if closed
 	?>
 	</ul>
