@@ -163,6 +163,12 @@ if(isset($_POST['valSub']))
 			 $what=__('Changes saved!', 'kush-micro-news');
 	}
 
+	if(isset($_POST['dateFormat']) && $_POST['dateFormat']!="")
+	{
+		update_option( "kush_mn_date_format",$_POST['dateFormat']);
+			 $what=__('Changes saved!', 'kush-micro-news');
+	}
+
 	if(isset($_POST['headBack']) && $_POST['headBack']!="")
 	{
 		update_option( "kush_mn_head_back",$_POST['headBack']);
@@ -214,7 +220,7 @@ if(isset($_POST['valSub']))
 			<h5 style="display:inline-block;margin:0;">(Default: Micro News)</h5>
 		</div>
 		<div class="options">			
-			<label for="headTextColor"><?php _e('Head Text Color', 'kush-micro-news');?>:</label>
+			<label for="headTextColor"><?php _e('Head text color', 'kush-micro-news');?>:</label>
 			<input type="text" name="headTextColor" value="<?php echo get_option('kush_mn_head_textColor','#FFFFFF');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="#FFFFFF">White [Default]</option>
@@ -231,7 +237,7 @@ if(isset($_POST['valSub']))
 			<h5 style="display:inline-block;margin:0;">(Hexadecimal color values, like: #0066CC)</h5>
 		</div>
 		<div class="options">			
-			<label for="headHighlightColor"><?php _e('Head Highlight Color', 'kush-micro-news');?>:</label>
+			<label for="headHighlightColor"><?php _e('Head gighlight color', 'kush-micro-news');?>:</label>
 			<input type="text" name="headHighlightColor" value="<?php echo get_option('kush_mn_head_highlightColor','#808080');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="#808080">Light Grey [Default]</option>
@@ -247,7 +253,7 @@ if(isset($_POST['valSub']))
 			</select>
 		</div>
 		<div class="options">			
-			<label for="headBack"><?php _e('Head Background Color', 'kush-micro-news');?>:</label>
+			<label for="headBack"><?php _e('Head background color', 'kush-micro-news');?>:</label>
 			<input type="text" name="headBack" value="<?php echo get_option('kush_mn_head_back','default');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="default">Grey Bars [Default]</option>
@@ -264,12 +270,12 @@ if(isset($_POST['valSub']))
 
 		<h3><?php _e('Display', 'kush-micro-news');?></h3>
 		<div class="options">
-			<label for="myRename"><?php _e('Full Story Text', 'kush-micro-news');?>:</label>
+			<label for="myRename"><?php _e('Full story text', 'kush-micro-news');?>:</label>
 			<input type="text" name="fullStoryText" value="<?php echo get_option("kush_mn_read_story_text");?>"/>
 			<h5 style="display:inline-block;margin:0;">(Default: Read Full story &raquo;)</h5>
 		</div>			
 		<div class="options">			
-			<label for="titleColor"><?php _e('Title Color', 'kush-micro-news');?>:</label>
+			<label for="titleColor"><?php _e('Title color', 'kush-micro-news');?>:</label>
 			<input type="text" name="titleColor" value="<?php echo get_option('kush_mn_color_title','#0066CC');?>" />
 			<select name="titleColorList" onclick="check_custom_color(this,'title')">
 				<option value="#0066CC">Light Blue [Default]</option>
@@ -285,7 +291,7 @@ if(isset($_POST['valSub']))
 			<h5 style="display:inline-block;margin:0;">(Hexadecimal color values, like: #0066CC)</h5>
 		</div>
 		<div class="options">
-			<label for="textColor"><?php _e('Text Color', 'kush-micro-news');?>:</label>
+			<label for="textColor"><?php _e('Text color', 'kush-micro-news');?>:</label>
 			<input type="text" name="textColor" value="<?php echo get_option('kush_mn_color_text', '#666666');?>" />
 			<select name="textColorList" onclick="check_custom_color(this,'text')">
 				<option value="#666666">Grey [Default]</option>
@@ -300,7 +306,7 @@ if(isset($_POST['valSub']))
 			</select>
 		</div>
 		<div class="options">
-			<label for="linkColorField"><?php _e('Link Color', 'kush-micro-news');?>:</label>
+			<label for="linkColorField"><?php _e('Link color', 'kush-micro-news');?>:</label>
 			<input type="text" name="linkColorField" value="<?php echo get_option('kush_mn_color_link', '#000000');?>" />
 			<select name="linkColorList" onclick="check_custom_color(this,'link')">
 				<option value="#000000">Black [Default]</option>
@@ -313,6 +319,32 @@ if(isset($_POST['valSub']))
 				<option value="#FFB6C1">Pink</option>
 				<option value="#191970">Midnight Blue</option>				
 			</select>
+		</div>
+		<div class="options">			
+			<?php 
+				function check_selected_date($value){
+					$date_format=get_option('kush_mn_date_format','d M Y');
+					if($date_format == $value)
+						echo 'selected = "selected"';
+				}
+			?>
+			<label for="dateFormat"><?php _e('Date format', 'kush-micro-news');?>:</label>
+ 			<select name="dateFormat">
+				<option <?php check_selected_date("d M Y");?> value="d M Y">20 Jan 1991</option>
+				<option <?php check_selected_date("d/m/Y");?> value="d/m/Y">20/01/1991</option>
+				<option <?php check_selected_date("d-m-Y");?> value="d-m-Y">20-01-1991</option>
+				<option <?php check_selected_date("M d Y");?> value="M d Y">Jan 20 1991</option>
+				<option <?php check_selected_date("m/d/Y");?> value="m/d/Y">01/20/1991</option>
+				<option <?php check_selected_date("m-d-Y");?> value="m-d-Y">01-20-1991</option>
+				<option <?php check_selected_date("Y M d");?> value="Y M d">1991 Jan 20</option>
+				<option <?php check_selected_date("Y/m/d");?> value="Y/m/d">1991/01/20</option>
+				<option <?php check_selected_date("Y-m-d");?> value="Y-m-d">1991-01-20</option>
+				<option <?php check_selected_date("Y d M");?> value="Y d M">1991 20 Jan</option>
+				<option <?php check_selected_date("Y/d/m");?> value="Y/d/m">1991/20/01</option>
+				<option <?php check_selected_date("Y-d-m");?> value="Y-d-m">1991-20-01</option>
+				<option <?php check_selected_date("hide");?> value="hide">Hide date</option>
+			</select>
+			<h5 style="display:inline-block;margin:0;">(Default: 20 Jan 1991)</h5>
 		</div>
 		<div class="options">
 			<label for="chkBorder"><?php _e('Enable colorful borders', 'kush-micro-news');?>:</label>

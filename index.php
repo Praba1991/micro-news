@@ -2,14 +2,14 @@
 /*
 Plugin Name: Kush Micro News
 Description: Spread the news in shortest possible way. Use links to refer data and title to concise it.
-Version: 1.6.6
+Version: 1.6.7
 Author: Kush Sharma
 Author Email: thekushsharma@gmail.com 
 Author URI: http://softnuke.com/
 Plugin URI: https://github.com/kushsharma/micro-news
 Text Domain: kush-micro-news
 Domain Path: /lang/
-Last Officially Updated: 24 Apr 2016
+Last Officially Updated: 02 Jun 2016
 */
 
 define('KUSH_MICRO_NEWS_DIR', plugin_dir_path(__FILE__));
@@ -223,6 +223,7 @@ function kush_micronews_activation() {
 	  	add_option('kush_mn_editor_access','false');
 	  	add_option('kush_mn_read_story_text','Read Full story &raquo;');
 	  	add_option('kush_mn_load_newtab','true');
+	  	add_option('kush_mn_date_format','d M Y');
 	}
 	kush_mn_install();
 

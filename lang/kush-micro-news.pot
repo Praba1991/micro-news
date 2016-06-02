@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Kush Micro News\n"
-"POT-Creation-Date: 2016-04-25 12:11+0530\n"
-"PO-Revision-Date: 2016-04-25 12:10+0530\n"
+"POT-Creation-Date: 2016-06-02 13:12+0530\n"
+"PO-Revision-Date: 2016-06-02 13:10+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Micro News"
 msgstr ""
 
-#: includes/admin.php:12 includes/admin.php:18 includes/admin.php:502
+#: includes/admin.php:12 includes/admin.php:18 includes/admin.php:535
 msgid "Add New"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgstr ""
 #: includes/admin.php:112 includes/admin.php:121 includes/admin.php:130
 #: includes/admin.php:139 includes/admin.php:145 includes/admin.php:151
 #: includes/admin.php:157 includes/admin.php:163 includes/admin.php:169
-#: includes/admin.php:177
+#: includes/admin.php:175 includes/admin.php:183
 msgid "Changes saved!"
 msgstr ""
 
@@ -44,194 +44,198 @@ msgstr ""
 msgid "Number of post cannot left blank, reverted to default."
 msgstr ""
 
-#: includes/admin.php:186
+#: includes/admin.php:192
 msgid "Micro News Settings"
 msgstr ""
 
-#: includes/admin.php:190
+#: includes/admin.php:196
 msgid "Functional"
 msgstr ""
 
-#: includes/admin.php:192
+#: includes/admin.php:198
 msgid "Number of news to display"
 msgstr ""
 
-#: includes/admin.php:197
+#: includes/admin.php:203
 msgid "Load More navigation"
 msgstr ""
 
-#: includes/admin.php:201
+#: includes/admin.php:207
 msgid "Open link in new tab"
 msgstr ""
 
-#: includes/admin.php:205
+#: includes/admin.php:211
 msgid "Swap news when navigating"
 msgstr ""
 
-#: includes/admin.php:207
+#: includes/admin.php:213
 msgid "Disabling this will append news when Load More is clicked."
 msgstr ""
 
-#: includes/admin.php:210 index.php:154
+#: includes/admin.php:216 index.php:154
 msgid "Header"
 msgstr ""
 
-#: includes/admin.php:212
+#: includes/admin.php:218
 msgid "Title over news"
 msgstr ""
 
-#: includes/admin.php:217
-msgid "Head Text Color"
+#: includes/admin.php:223
+msgid "Head text color"
 msgstr ""
 
-#: includes/admin.php:234
-msgid "Head Highlight Color"
+#: includes/admin.php:240
+msgid "Head gighlight color"
 msgstr ""
 
-#: includes/admin.php:250
-msgid "Head Background Color"
+#: includes/admin.php:256
+msgid "Head background color"
 msgstr ""
 
-#: includes/admin.php:265
+#: includes/admin.php:271
 msgid "Display"
 msgstr ""
 
-#: includes/admin.php:267
-msgid "Full Story Text"
+#: includes/admin.php:273
+msgid "Full story text"
 msgstr ""
 
-#: includes/admin.php:272
-msgid "Title Color"
+#: includes/admin.php:278
+msgid "Title color"
 msgstr ""
 
-#: includes/admin.php:288
-msgid "Text Color"
+#: includes/admin.php:294
+msgid "Text color"
 msgstr ""
 
-#: includes/admin.php:303
-msgid "Link Color"
+#: includes/admin.php:309
+msgid "Link color"
 msgstr ""
 
-#: includes/admin.php:318
+#: includes/admin.php:331
+msgid "Date format"
+msgstr ""
+
+#: includes/admin.php:351
 msgid "Enable colorful borders"
 msgstr ""
 
-#: includes/admin.php:322
+#: includes/admin.php:355
 msgid "Enable link hover effect"
 msgstr ""
 
-#: includes/admin.php:326
+#: includes/admin.php:359
 msgid "Input"
 msgstr ""
 
-#: includes/admin.php:328
+#: includes/admin.php:361
 msgid "HTML parsing while adding news"
 msgstr ""
 
-#: includes/admin.php:330
+#: includes/admin.php:363
 msgid ""
 "Try not to use improper markup if HTML parsing is enabled otherwise it could "
 "break up your whole site."
 msgstr ""
 
-#: includes/admin.php:333
+#: includes/admin.php:366
 msgid "Access"
 msgstr ""
 
-#: includes/admin.php:335
+#: includes/admin.php:368
 msgid "Enable access to editors"
 msgstr ""
 
-#: includes/admin.php:337
+#: includes/admin.php:370
 msgid "Users with access level of editor."
 msgstr ""
 
-#: includes/admin.php:344
+#: includes/admin.php:377
 msgid "Download Backup of your Micro News data"
 msgstr ""
 
-#: includes/admin.php:344
+#: includes/admin.php:377
 msgid "Download"
 msgstr ""
 
-#: includes/admin.php:348
+#: includes/admin.php:381
 msgid "Update table storage"
 msgstr ""
 
-#: includes/admin.php:348
+#: includes/admin.php:381
 msgid "Update"
 msgstr ""
 
-#: includes/admin.php:349
+#: includes/admin.php:382
 msgid "Create a backup first."
 msgstr ""
 
-#: includes/admin.php:386
+#: includes/admin.php:419
 msgid "Updated Successfully!"
 msgstr ""
 
-#: includes/admin.php:404
+#: includes/admin.php:437
 msgid ""
 "URGENT: DATABASE UPDATE REQUIRED! Use button at the end of Settings page."
 msgstr ""
 
-#: includes/admin.php:459
+#: includes/admin.php:492
 msgid "New Post Added."
 msgstr ""
 
-#: includes/admin.php:462
+#: includes/admin.php:495
 msgid "Don't you think atleast title is necessary."
 msgstr ""
 
-#: includes/admin.php:468
+#: includes/admin.php:501
 msgid "Micro News Add New Post"
 msgstr ""
 
-#: includes/admin.php:475
+#: includes/admin.php:508
 msgid "Title"
 msgstr ""
 
-#: includes/admin.php:479
+#: includes/admin.php:512
 msgid "Content"
 msgstr ""
 
-#: includes/admin.php:483
+#: includes/admin.php:516
 msgid "Link"
 msgstr ""
 
-#: includes/admin.php:488 includes/core.php:273
+#: includes/admin.php:521 includes/core.php:278
 msgid "Category Key"
 msgstr ""
 
-#: includes/core.php:124 includes/core.php:270
+#: includes/core.php:129 includes/core.php:275
 msgid "on"
 msgstr ""
 
-#: includes/core.php:216
+#: includes/core.php:221
 msgid "Updated successfully."
 msgstr ""
 
-#: includes/core.php:218 includes/core.php:230
+#: includes/core.php:223 includes/core.php:235
 msgid "Serious error occured."
 msgstr ""
 
-#: includes/core.php:228
+#: includes/core.php:233
 msgid "Deleted successfully."
 msgstr ""
 
-#: includes/core.php:251
+#: includes/core.php:256
 msgid "Micro News Posts"
 msgstr ""
 
-#: includes/core.php:275
+#: includes/core.php:280
 msgid "Reference Link"
 msgstr ""
 
-#: includes/core.php:291
+#: includes/core.php:296
 msgid "Page"
 msgstr ""
 
-#: includes/core.php:298
+#: includes/core.php:303
 msgid "Home"
 msgstr ""
 

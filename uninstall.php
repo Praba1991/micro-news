@@ -23,6 +23,7 @@ delete_option('kush_mn_load_nav_swap');
 delete_option('kush_mn_read_story_text');
 delete_option('kush_mn_editor_access');
 delete_option('kush_mn_load_newtab');
+delete_option('kush_mn_date_format');
 
 
 global $wpdb;

@@ -55,6 +55,8 @@ $table_name = $wpdb->prefix . "kushmicronews";
 	$titleColor = get_option('kush_mn_color_title','#0066CC');
 	$textColor = get_option('kush_mn_color_text', '#666666');
 	$linkColor = get_option('kush_mn_color_link', '#000000');
+
+	$date_format = get_option('kush_mn_date_format','d M Y');
 	
 	$loadNav = get_option('kush_mn_load_nav','true');
 	$loadNavSwap = get_option('kush_mn_load_nav_swap','true');
@@ -109,7 +111,9 @@ $table_name = $wpdb->prefix . "kushmicronews";
 	foreach ( $rows as $row ) 		
 	{	
 		$date=strtotime($row->time);
-		$formateddate = date('d M Y',$date);
+
+		$show_date = ($date_format == "hide") ? false : true;
+		$formateddate = date($date_format ,$date); //d M Y
 	
 		$output_html .='<div class="wrapNews '.$row->id.'" style="border-color:';
 		if($showBorder=='true')//check border color
@@ -121,7 +125,8 @@ $table_name = $wpdb->prefix . "kushmicronews";
 	    	
 	    	//show text
 	    	$output_html .='<div class="text" style="color:'.$textColor.'">'.$row->text.' ';
-	    		$output_html .='<span class="postedOn">'.__('on', 'kush-micro-news').' '.$formateddate.'</span>';
+    		if($show_date) //show only if user wants to
+    			$output_html .='<span class="postedOn">'.__('on', 'kush-micro-news').' '.$formateddate.'</span>';
 	    	$output_html .='</div>';
 	        
 	        //show url if present
