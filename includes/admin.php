@@ -458,6 +458,7 @@ $what='';
 			$title=sanitize($_POST['k_mn_title']);
 			$content=nl2br(sanitize($_POST['k_mn_content'])); //nl2br will convert any new line character to br tag respectively
 			$link=sanitize($_POST['k_mn_link']);
+			$datepicker=sanitize($_POST['k_mn_date']); 
 			
 		}
 		else
@@ -465,6 +466,7 @@ $what='';
 			$title=$_POST['k_mn_title'];
 			$content=($_POST['k_mn_content']); 
 			$link=$_POST['k_mn_link'];
+			$datepicker=$_POST['k_mn_date'];
 
 		}
 
@@ -476,10 +478,10 @@ $what='';
 		global $wpdb;			
 		$table_name = $wpdb->prefix . "kushmicronews";
 		
-		$query = "INSERT INTO `$table_name` (`time`,`name`,`text`,`url`,`category`) VALUES ('".date('Y-m-d H:i:s')."','$title','$content','$link','$cat');";
+		$query = "INSERT INTO `$table_name` (`time`,`name`,`text`,`url`, `datetime`, `category`) VALUES ('$datepicker','$title','$content','$link','$cat');";
 		if($dbver == '0' || $dbver == '1.0' || $dbver == '')
 		{//database without category column, to overwrite query string
-			$query = "INSERT INTO `$table_name` (`time`,`name`,`text`,`url`) VALUES ('".date('Y-m-d H:i:s')."','$title','$content','$link');";
+			$query = "INSERT INTO `$table_name` (`time`,`name`,`text`,`url`) VALUES ('$datepicker','$title','$content','$link');";
 		}		
 			
 		if($title!='')
@@ -515,6 +517,11 @@ $what='';
 				<label for="k_mn_link"><?php _e('Link','kush-micro-news');?>:</label>
 				<input type="text" name="k_mn_link" placeholder="Link Reference"/>
 			</div>
+			<div class="row">				
+			<label for="k_mn_link"><?php _e('Date','kush-micro-news');?></label>    				
+			<input type="date" id="datepicker" name="k_mn_date" value="" class="example-datepicker"/>       			
+			</div> 
+			
 			<?php if($dbver != '0' && $dbver != '1.0' && $dbver != '') :?>
 				<div class="row">
 					<label for="k_mn_cat"><?php _e('Category Key','kush-micro-news');?>:</label>
