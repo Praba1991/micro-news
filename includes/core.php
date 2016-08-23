@@ -200,6 +200,7 @@ if(isset($_POST['nTitle']) & empty($_POST['nTitle'])===false)
 			$content= sanitize($_POST['nContent']);
 			$link= sanitize($_POST['nLink']);
 			$cat= (isset($_POST['nCat'])) ? trim($_POST['nCat']) : '';
+			$datepicker=sanitize($_POST['nDate']);
 		}
 		else
 		{
@@ -208,12 +209,13 @@ if(isset($_POST['nTitle']) & empty($_POST['nTitle'])===false)
 			$content=$_POST['nContent'];
 			$link=$_POST['nLink'];
 			$cat= (isset($_POST['nCat'])) ? trim($_POST['nCat']) : '';
+			$datepicker=$_POST['nDate'];
 		}
 		//different query if cat column is not present
 		if($cat == "")
-			$query="UPDATE `$table_name` SET `name`='$title' , `text`='$content' , `url`='$link', `time`='".date('Y-m-d H:i:s')."' WHERE `id`='$id';";
+			$query="UPDATE `$table_name` SET `name`='$title' , `text`='$content' , `url`='$link', `time`='$datepicker' WHERE `id`='$id';";
 		else
-			$query="UPDATE `$table_name` SET `name`='$title' , `text`='$content' , `category`='$cat', `url`='$link', `time`='".date('Y-m-d H:i:s')."' WHERE `id`='$id';";
+			$query="UPDATE `$table_name` SET `name`='$title' , `text`='$content' , `category`='$cat', `url`='$link', `time`='$datepicker' WHERE `id`='$id';";
 
 			$chk=$wpdb->query($query);
 			
